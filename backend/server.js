@@ -14,17 +14,16 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("Database Connected Successfully");
+    log(chalk.success("Database Connected Successfully"))
   })
   .catch((err) => {
-    console.log("Database Connection Failed");
-    console.log(err.message);
+    log(chalk.bgGreen(" Database Connection Failed "));
   });
 
 // middleware
 app.use(express.json());
 app.use((req, res, next) => {
-  log(chalk.bgYellow(req.path, req.method));
+  log(chalk.bgMagenta(` ${req.path} => ${req.method} `));
   next();
 });
 
@@ -32,5 +31,5 @@ app.use((req, res, next) => {
 app.use("/api/workouts/", workoutRoutes);
 
 app.listen(process.env.PORT, () => {
-  log(chalk.bgCyan.black("Listening on port " + process.env.PORT));
+  log(chalk.bgCyan.black(" Listening on port " + process.env.PORT + " "));
 });
