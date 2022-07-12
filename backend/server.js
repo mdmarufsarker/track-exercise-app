@@ -14,10 +14,10 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    log(chalk.success("Database Connected Successfully"))
+    log(chalk.black.bgGreen("Database Connected Successfully"))
   })
   .catch((err) => {
-    log(chalk.bgGreen(" Database Connection Failed "));
+    log(chalk.black.bgGreen(" Database Connection Failed " + err.message  + " "));
   });
 
 // middleware
